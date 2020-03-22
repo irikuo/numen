@@ -1,8 +1,14 @@
 import React from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
+import { getPosts, BlogPost } from '../utils/posts';
 
-const Home: NextPage = () => (
+type IndexProps = {
+  posts: BlogPost[];
+};
+
+const Home: NextPage<IndexProps> = ({ posts }) => (
   <div className="container">
     <Head>
       <title>Create Next App</title>
@@ -17,6 +23,18 @@ const Home: NextPage = () => (
       <p className="description">
         Get started by editing <code>pages/index.js</code>
       </p>
+
+      <div className="grid">
+        <ul>
+          {posts.map(post => (
+            <li key={post.slug}>
+              <Link href={`/post/${post.slug}`}>
+                <a>{post.title}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <div className="grid">
         <a href="https://nextjs.org/docs" className="card">
@@ -55,5 +73,10 @@ const Home: NextPage = () => (
     </footer>
   </div>
 );
+
+export const getStaticProps = (): { props: IndexProps } => {
+  const sortedPosts = getPosts().sort((a, b) => a.date.localeCompare(b.date));
+  return { props: { posts: sortedPosts } };
+};
 
 export default Home;
