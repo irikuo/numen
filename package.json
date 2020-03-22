@@ -15,8 +15,8 @@
     "highlight.js": "^9.18.1",
     "marked": "^0.8.1",
     "next": "9.3.1",
-    "react": "16.13.0",
-    "react-dom": "16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "sass": "^1.26.3"
   },
   "devDependencies": {
