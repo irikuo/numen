@@ -6,6 +6,7 @@ tags:
   - tag1
   - tag2
 ---
+
 # First post
 
 Test text

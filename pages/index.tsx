@@ -26,7 +26,7 @@ const Home: NextPage<IndexProps> = ({ posts }) => (
 
       <div className="grid">
         <ul>
-          {posts.map(post => (
+          {posts.map((post) => (
             <li key={post.slug}>
               <Link href={`/post/${post.slug}`}>
                 <a>{post.title}</a>

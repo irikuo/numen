@@ -15,7 +15,7 @@ export const getPosts = (): BlogPost[] => {
   const postFiles = fs.readdirSync(postsDirectory);
 
   // Prepare posts off file system
-  const posts = postFiles.map(fileName => {
+  const posts = postFiles.map((fileName) => {
     const fullPath = path.join(postsDirectory, fileName);
     const bytes = fs.readFileSync(fullPath, 'utf8');
     const {

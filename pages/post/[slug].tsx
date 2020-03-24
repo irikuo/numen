@@ -59,7 +59,7 @@ export const getStaticProps = ({ params }: { params: { slug: string } }): { prop
   const { slug } = params;
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const post = getPosts().find(p => p.slug === slug)!;
+  const post = getPosts().find((p) => p.slug === slug)!;
 
   const { title, date, content } = post;
 
@@ -79,7 +79,7 @@ export const getStaticProps = ({ params }: { params: { slug: string } }): { prop
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: getPosts().map(post => `/post/${post.slug}`),
+    paths: getPosts().map((post) => `/post/${post.slug}`),
     fallback: false,
   };
 };
