@@ -1,58 +1,12 @@
 import React from 'react';
 import { NextPage, GetStaticPaths } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
-import format from 'date-fns/format';
 import hl from 'highlight.js';
 import marked from 'marked';
 import { getPosts } from '../../utils/posts';
+import Post, { PostProps } from '../../components/Post';
 
-type PostProps = {
-  slug: string;
-  title: string;
-  date: string;
-  html: string;
-};
-
-const Post: NextPage<PostProps> = ({ slug, title, date, html }) => {
-  return (
-    <main className="page-content" aria-label="Content">
-      <div className="wrapper">
-        <article className="post h-entry">
-          <header className="post-header">
-            <Head>
-              <title>{title}</title>
-            </Head>
-            <Link href="/">
-              <a>&laquo; Back</a>
-            </Link>
-            <h1 className="post-title p-name" itemProp="name headline">
-              {title}
-            </h1>
-            <p className="post-meta">
-              <time className="dt-published" dateTime={date} itemProp="datePublished">
-                {format(new Date(date), 'd MMM yyyy')}
-              </time>
-            </p>
-          </header>
-
-          <div
-            className="post-content e-content"
-            itemProp="articleBody"
-            dangerouslySetInnerHTML={{ __html: html }}
-          ></div>
-
-          <a className="u-url" href={`/posts/${slug}`} hidden></a>
-
-          <footer className="site-footer">
-            <Link href="/">
-              <a>&laquo; Back</a>
-            </Link>
-          </footer>
-        </article>
-      </div>
-    </main>
-  );
+const PostPage: NextPage<PostProps> = (props) => {
+  return <Post {...props} />;
 };
 
 export const getStaticProps = ({ params }: { params: { slug: string } }): { props: PostProps } => {
@@ -84,4 +38,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default Post;
+export default PostPage;
