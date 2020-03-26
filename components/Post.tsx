@@ -16,27 +16,23 @@ export type PostProps = {
 const Post: NextPage<PostProps> = ({ slug, title, date, html }) => {
   return (
     <main className={styles.page} aria-label="Content">
+      <Head>
+        <title>{title}</title>
+      </Head>
       <article className={styles.post}>
         <header className={styles.header}>
-          <Head>
-            <title>{title}</title>
-          </Head>
-          <Link href="/">
-            <a>&laquo; Back</a>
-          </Link>
-          <h1 className="title">{title}</h1>
-          <p className="post-meta">
-            <time className="dt-published" dateTime={date}>
-              {format(new Date(date), 'd MMM yyyy')}
-            </time>
-          </p>
+          <h1>
+            <Link href={slug}>{title}</Link>
+          </h1>
         </header>
 
-        <div className="content" dangerouslySetInnerHTML={{ __html: html }}></div>
-
-        <a className="u-url" href={`/posts/${slug}`} hidden></a>
+        <div className={styles.content} dangerouslySetInnerHTML={{ __html: html }}></div>
 
         <footer className="footer">
+          <p>
+            <Link href={slug}>{title}</Link> was published{' '}
+            <time dateTime={date}>{format(new Date(date), 'd MMM yyyy')}</time>
+          </p>
           <Link href="/">
             <a>&laquo; Back</a>
           </Link>

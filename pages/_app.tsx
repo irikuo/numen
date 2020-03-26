@@ -1,6 +1,8 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import '../styles.scss';
+
+import 'typeface-open-sans';
+import '../styles/styles.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return <Component {...pageProps} />;
