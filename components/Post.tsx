@@ -22,7 +22,9 @@ const Post: NextPage<PostProps> = ({ slug, title, date, html }) => {
       <article className={styles.post}>
         <header className={styles.header}>
           <h1>
-            <Link href={slug}>{title}</Link>
+            <Link href={slug}>
+              <a>{title}</a>
+            </Link>
           </h1>
         </header>
 
@@ -30,11 +32,13 @@ const Post: NextPage<PostProps> = ({ slug, title, date, html }) => {
 
         <footer className="footer">
           <p>
-            <Link href={slug}>{title}</Link> was published{' '}
-            <time dateTime={date}>{format(new Date(date), 'd MMM yyyy')}</time>
+            <Link href={slug}>
+              <a>{title}</a>
+            </Link>{' '}
+            was published <time dateTime={date}>{format(new Date(date), 'd MMM yyyy')}</time>
           </p>
           <Link href="/">
-            <a>&laquo; Back</a>
+            <a>Home</a>
           </Link>
         </footer>
       </article>
