@@ -15,34 +15,38 @@ export type PostProps = {
 
 const Post: NextPage<PostProps> = ({ slug, title, date, html }) => {
   return (
-    <main className={styles.page} aria-label="Content">
-      <Head>
-        <title>{title}</title>
-      </Head>
-      <article className={styles.post}>
-        <header className={styles.header}>
-          <h1>
-            <Link href={slug}>
-              <a>{title}</a>
+    <section className={styles.layout}>
+      <aside className={styles.side}></aside>
+      <main className={styles.content} aria-label="Content">
+        <Head>
+          <title>{title}</title>
+        </Head>
+        <article className={styles.post}>
+          <header className={styles.header}>
+            <h1>
+              <Link href={slug}>
+                <a>{title}</a>
+              </Link>
+            </h1>
+          </header>
+
+          <div className={styles.content} dangerouslySetInnerHTML={{ __html: html }}></div>
+
+          <footer className="footer">
+            <p>
+              <Link href={slug}>
+                <a>{title}</a>
+              </Link>{' '}
+              was published <time dateTime={date}>{format(new Date(date), 'd MMM yyyy')}</time>
+            </p>
+            <Link href="/">
+              <a>Home</a>
             </Link>
-          </h1>
-        </header>
-
-        <div className={styles.content} dangerouslySetInnerHTML={{ __html: html }}></div>
-
-        <footer className="footer">
-          <p>
-            <Link href={slug}>
-              <a>{title}</a>
-            </Link>{' '}
-            was published <time dateTime={date}>{format(new Date(date), 'd MMM yyyy')}</time>
-          </p>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-        </footer>
-      </article>
-    </main>
+          </footer>
+        </article>
+      </main>
+      <aside className={styles.side}></aside>
+    </section>
   );
 };
 
