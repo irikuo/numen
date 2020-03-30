@@ -1,5 +1,8 @@
 @import 'reset';
+@import 'variables';
 
 body {
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: 'Libre Franklin', Arial, Helvetica, sans-serif;
+  font-weight: $light;
+  color: $main-dark-color;
 }

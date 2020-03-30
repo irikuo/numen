@@ -1,0 +1,32 @@
+$main-dark-color: #222;
+$main-light-color: #818181;
+
+$light: 300;
+$normal: 400;
+$bold: 600;
+
+$default-spacing: 20px;
+
+@mixin text-vertical-spacing {
+  margin: 0 0 $default-spacing;
+}
+
+@mixin title-text {
+  font-size: 36px;
+  font-weight: $bold;
+  color: $main-dark-color;
+  display: block;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+@mixin content-text {
+  font-size: 16px;
+  color: $main-light-color;
+}
+
+@mixin content-title-text {
+  font-size: 24px;
+  font-weight: $normal;
+  color: $main-dark-color;
+}

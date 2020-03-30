@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 
-import 'typeface-open-sans';
+import 'typeface-libre-franklin';
 import '../styles/styles.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {

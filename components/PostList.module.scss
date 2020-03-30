@@ -1,0 +1,30 @@
+@import '../styles/variables';
+
+.post {
+  margin: 50px 0;
+}
+
+.date {
+  font-size: 13px;
+  color: $main-light-color;
+  @include text-vertical-spacing;
+}
+
+.title {
+  @include title-text;
+  @include text-vertical-spacing;
+}
+
+.content {
+  @include content-text;
+  @include text-vertical-spacing;
+}
+
+.more {
+  border: 1px solid $main-light-color;
+  border-radius: 18px;
+  font-size: 13px;
+  color: $main-light-color;
+  padding: 9px 20px;
+  text-decoration: none;
+}

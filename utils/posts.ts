@@ -7,6 +7,7 @@ export type BlogPost = {
   title: string;
   date: string;
   content: string;
+  summary: string;
 };
 
 export const getPosts = (): BlogPost[] => {
@@ -19,10 +20,10 @@ export const getPosts = (): BlogPost[] => {
     const fullPath = path.join(postsDirectory, fileName);
     const bytes = fs.readFileSync(fullPath, 'utf8');
     const {
-      data: { slug, title, date },
+      data: { slug, title, date, summary },
       content,
     } = matter(bytes);
-    return { slug, title, date, content };
+    return { slug, title, date, content, summary };
   });
 
   return posts;
