@@ -1,6 +1,5 @@
 import React from 'react';
 import { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import format from 'date-fns/format';
 import Layout from './Layout';
