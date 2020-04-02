@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { format } from 'date-fns';
-import hl from 'highlight.js';
-import marked from 'marked';
+import ReactMarkdown from 'react-markdown';
+import CodeBlock from './CodeBlock';
 import { BlogPost } from '../utils/posts';
 
 import styles from './PostList.module.scss';
@@ -21,16 +21,7 @@ const PostListItem: React.FunctionComponent<PostListItemProps> = ({ post }) => (
         <a className={styles.title}>{post.title}</a>
       </Link>
     </h2>
-    <div
-      className={styles.content}
-      dangerouslySetInnerHTML={{
-        __html: marked(post.summary, {
-          highlight: (code, lang) => {
-            return hl.highlight(lang, code).value;
-          },
-        }),
-      }}
-    ></div>
+    <ReactMarkdown className={styles.content} source={post.summary} renderers={{ code: CodeBlock }} />
     <Link href={`/post/${post.slug}`}>
       <a className={styles.more}>Continue reading...</a>
     </Link>

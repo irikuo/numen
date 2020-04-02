@@ -2,6 +2,8 @@ import React from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import format from 'date-fns/format';
+import ReactMarkdown from 'react-markdown';
+import CodeBlock from './CodeBlock';
 import Layout from './Layout';
 
 import styles from './Post.module.scss';
@@ -10,10 +12,10 @@ export type PostProps = {
   slug: string;
   title: string;
   date: string;
-  html: string;
+  content: string;
 };
 
-const Post: NextPage<PostProps> = ({ slug, title, date, html }) => {
+const Post: NextPage<PostProps> = ({ slug, title, date, content }) => {
   return (
     <Layout title={title} description={title}>
       <article className={styles.post}>
@@ -22,7 +24,7 @@ const Post: NextPage<PostProps> = ({ slug, title, date, html }) => {
             <h1 className={styles.title}>{title}</h1>
           </a>
         </Link>
-        <div className={styles.content} dangerouslySetInnerHTML={{ __html: html }}></div>
+        <ReactMarkdown className={styles.content} source={content} renderers={{ code: CodeBlock }} />
 
         <footer className={styles.footerText}>
           <Link href={slug}>

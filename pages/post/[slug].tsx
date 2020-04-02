@@ -1,7 +1,5 @@
 import React from 'react';
 import { NextPage, GetStaticPaths } from 'next';
-import hl from 'highlight.js';
-import marked from 'marked';
 import { getPosts } from '../../utils/posts';
 import Post, { PostProps } from '../../components/Post';
 
@@ -15,18 +13,10 @@ export const getStaticProps = ({ params }: { params: { slug: string } }): { prop
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const post = getPosts().find((p) => p.slug === slug)!;
 
-  const { title, date, content } = post;
-
   return {
     props: {
+      ...post,
       slug,
-      title,
-      date,
-      html: marked(content, {
-        highlight: (code, lang) => {
-          return hl.highlight(lang, code).value;
-        },
-      }),
     },
   };
 };
